@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model amb_form {
+  id               Int                    @id @default(autoincrement())
+  name_table       String
+  name_route       String?
+  menu_name        String?
+  menu_description String?
+  help             String?
+  created_at       DateTime               @default(now())
+  updated_at       DateTime?
+  created_user     Int?
+  updated_user     Int?
+  profileAuth      amb_profile_autoriza[]
+}
+
+model amb_profile {
+  id           Int                    @id @default(autoincrement())
+  description  String
+  created_user Int?
+  updated_user Int?
+  created_at   DateTime               @default(now())
+  updated_at   DateTime?
+  forms        amb_profile_autoriza[]
+
+  // relação com user (1 perfil -> muitos usuários)
+  users user[]
+}
+
+model amb_profile_autoriza {
+  id             Int     @id @default(autoincrement())
+  amb_profile_id Int
+  amb_form_id    Int
+  direitos       String?
+
+  profile amb_profile @relation(fields: [amb_profile_id], references: [id])
+  form    amb_form    @relation(fields: [amb_form_id], references: [id])
+}
+
+model user {
+  id        Int          @id @default(autoincrement())
+  name      String
+  email     String       @unique
+  password  String
+  profileId Int?
+  profile   amb_profile? @relation(fields: [profileId], references: [id])
+
+  createdAt DateTime @default(now())
+}
