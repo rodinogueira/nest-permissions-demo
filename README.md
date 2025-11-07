@@ -1,6 +1,6 @@
-1. Garantir que as permissões estão no banco
-
-> 1.1 Inserir rota /user na tabela amb_form:
+1. Garantir que as permissões estão no banco aqui
+Meu Confli aqui
+> 1.1 Inserir rota /user na tabela amb_form: e aqui
 
 ```sql
   INSERT INTO amb_form 
