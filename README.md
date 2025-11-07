@@ -1,7 +1,7 @@
-1. Garantir que as permissões estão no banco
-
+1. Garantir que as permissões estão no banco Agora vamos gerar nosso conflito
+Gerando conflito
 > 1.1 Inserir rota /user na tabela amb_form:
-
+Conflito
 ```sql
   INSERT INTO amb_form 
   (name_table, name_route, menu_name, menu_description)
