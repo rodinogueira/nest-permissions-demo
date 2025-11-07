@@ -1,4 +1,4 @@
-1. Garantir que as permissões estão no banco aqui
+1. Garantir que as permissões estão no banco adiciona linha que vai gerar conflit
 Meu Confli aqui
 > 1.1 Inserir rota /user na tabela amb_form: e aqui
 
